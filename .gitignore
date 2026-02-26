@@ -1,0 +1,6 @@
+DATA/
+*.mat
+results/
+.nvimlog
+.vscode/
+__pycache__/
