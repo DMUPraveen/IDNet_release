@@ -570,7 +570,7 @@ if __name__ == "__main__":
 
     
     # select example number and parameters    
-    EX_NUM = 1
+    EX_NUM = 3
     
     
     if EX_NUM == 1: # DC1, synthetic data with nonlinear mixtures, BLMM
