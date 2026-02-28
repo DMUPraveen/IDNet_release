@@ -26,7 +26,13 @@ The datasets are available in Zenodo [here](https://zenodo.org/record/8360465), 
 
 ### Running with the original data
 
-To run the method using the datasets used in the paper, just run `main_IDNet.py` with the appropriate dataset selected in the `EX_NUM` variable in the beginning of the main function.
+To run the method using the datasets used in the paper, just run `main_IDNet.py` with the appropriate options.  You can now pass dataset choice and number of epochs via the command line instead of editing the script.
+
+Example:
+```
+python3 main_IDNet.py --ex_num 2 --num_epochs 50
+```
+The `--ex_num` flag selects the dataset (1–5) and `--num_epochs` sets the training epochs.
 
 
 The results are saved in `.mat` format in the `results` folder. They contain the variables:  

@@ -29,6 +29,9 @@ path_dataset_DC2 = ['DATA/synth_DC2/alldata_ex_DC2.mat',\
 path_dataset_Samson = ['DATA/real_Samson/alldata_real_Samson.mat',\
                        'DATA/real_Samson/extracted_bundles.mat']
 
+path_dataset_Samson = ['DATA/real_Samson/alldata_real_Samson_K_3.mat',\
+                       'DATA/real_Samson/extracted_bundles.mat']
+                      
 path_dataset_Jasper = ['DATA/real_Jasper/alldata_real_Jasper.mat',\
                        'DATA/real_Jasper/extracted_bundles.mat']
 

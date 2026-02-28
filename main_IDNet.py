@@ -33,6 +33,14 @@ random.seed(seed)
 torch.manual_seed(seed)
 np.random.seed(seed)
 
+# command line configuration
+parser = argparse.ArgumentParser(description='Train IDNet model')
+parser.add_argument('--num_epochs', type=int, default=2,
+                    help='number of training epochs')
+parser.add_argument('--ex_num', type=int, default=3,
+                    help='experiment number/dataset option (1-5)')
+args = parser.parse_args()
+
 
 
 class IDNet(nn.Module):
@@ -570,7 +578,8 @@ if __name__ == "__main__":
 
     
     # select example number and parameters    
-    EX_NUM = 3
+    # allow experiment selection via command line as well
+    EX_NUM = args.ex_num
     
     
     if EX_NUM == 1: # DC1, synthetic data with nonlinear mixtures, BLMM
@@ -619,7 +628,8 @@ if __name__ == "__main__":
     scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
     
     start_time = time.time()
-    num_epochs = 30; # number of epochs to train
+    # training iterations ------------------------------------------------
+    num_epochs = args.num_epochs  # number of epochs to train (from command line)
     loss_old = 1e30
     for epoch in range(1, num_epochs + 1):
         loss_t = train(epoch)
