@@ -4,3 +4,4 @@ results/
 .nvimlog
 .vscode/
 __pycache__/
+__marimo__/
