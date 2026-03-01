@@ -39,6 +39,6 @@ bundle_nbr = 100;
 [bundleLibs2]=extractbundles_batchVCA(Y, M0, bundle_nbr, percent);
 
 
-save(output_filename,'bundleLibs')
+save(output_filename,'bundleLibs','-v7')
 
 

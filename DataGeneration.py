@@ -15,6 +15,8 @@ import numpy as np
 from scipy.io import loadmat, savemat
 from matplotlib import pyplot as plt
 import utils
+from pathlib import Path
+from typing import Optional
 
 
 
@@ -133,23 +135,26 @@ class dataVariability_synth():
 
 
 class dataReal_real():
-    def __init__(self, ex_num=1):
+    def __init__(self, dataset:str):
         '''data from real examples
         ex_num \in \{1,2,3\} = \{Samson, Jasper Ridge, Cuprite\}'''
         
-        if ex_num == 1: # load data for the Samson image
-            mat_contents1 = loadmat(path_dataset_Samson[0]) # load image
-            mat_contents2 = loadmat(path_dataset_Samson[1]) # load image-extracted spectral libraries
+        # if ex_num == 1: # load data for the Samson image
+        #     mat_contents1 = loadmat(path_dataset_Samson[0]) # load image
+        #     mat_contents2 = loadmat(path_dataset_Samson[1]) # load image-extracted spectral libraries
         
-        if ex_num == 2: # load data for the Jasper Ridge image
-            mat_contents1 = loadmat(path_dataset_Jasper[0]) # load image
-            mat_contents2 = loadmat(path_dataset_Jasper[1]) # load image-extracted spectral libraries
+        # if ex_num == 2: # load data for the Jasper Ridge image
+        #     mat_contents1 = loadmat(path_dataset_Jasper[0]) # load image
+        #     mat_contents2 = loadmat(path_dataset_Jasper[1]) # load image-extracted spectral libraries
         
-        if ex_num == 3: # load data for the Cuprite image
-            mat_contents1 = loadmat(path_dataset_Cuprite[0]) # load image
-            mat_contents2 = loadmat(path_dataset_Cuprite[1]) # load image-extracted spectral libraries
+        # if ex_num == 3: # load data for the Cuprite image
+        #     mat_contents1 = loadmat(path_dataset_Cuprite[0]) # load image
+        #     mat_contents2 = loadmat(path_dataset_Cuprite[1]) # load image-extracted spectral libraries
 
             
+        BASE_PATH = Path('DATA')
+        mat_contents1 = loadmat(BASE_PATH / f'{dataset}.mat')
+        mat_contents2 = loadmat(BASE_PATH / f'{dataset}_bundles.mat')
         self.L = mat_contents1['M0'].shape[0]
         self.P = mat_contents1['M0'].shape[1]
         self.N = mat_contents1['Y'].shape[1]
@@ -215,6 +220,8 @@ class dataset_maker(torch.utils.data.Dataset):
             self.NonlinearData_synth()
         if data_opt == 2: 
             self.VariabilityData_synth()
+        if type(data_opt) == str:
+            self.RealData_real(data_opt)
         if data_opt in range(3,6):
             self.RealData_real(data_opt-2)
         

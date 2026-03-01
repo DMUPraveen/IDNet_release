@@ -37,7 +37,7 @@ np.random.seed(seed)
 parser = argparse.ArgumentParser(description='Train IDNet model')
 parser.add_argument('--num_epochs', type=int, default=2,
                     help='number of training epochs')
-parser.add_argument('--ex_num', type=int, default=3,
+parser.add_argument('--ex_num', type=str, default='samson',
                     help='experiment number/dataset option (1-5)')
 args = parser.parse_args()
 
@@ -613,6 +613,10 @@ if __name__ == "__main__":
         my_lamb_Wd = 5
         
         
+    my_llambda = 1
+    my_tau     = 0.005
+    my_lamb_We = 0.01
+    my_lamb_Wd = 0.1
     
     train_loader = torch.utils.data.DataLoader(DG.dataset_maker(data_opt=EX_NUM), batch_size=16, shuffle=True)
 
